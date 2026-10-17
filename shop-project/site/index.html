@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Haat. — Everything for home, delivered fast</title>
+<style>
+:root{--navy:#1b2559;--navy2:#2d3a8c;--amber:#f5a800;--bg:#f4f6fc;--ink:#1c2033;--mute:#6b7390;--card:#fff;--ok:#12a150;--bad:#d93025}
+*{box-sizing:border-box;margin:0}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink)}
+button{font:inherit;cursor:pointer;border:0}
+header{position:sticky;top:0;z-index:20;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:14px 5vw}
+.logo{font-size:28px;font-weight:800;letter-spacing:-1px}.logo i{color:var(--amber);font-style:normal}
+nav{display:flex;gap:10px;align-items:center}
+.btn{padding:10px 18px;border-radius:10px;font-weight:600;transition:.15s}
+.ghost{background:transparent;color:#fff;border:1px solid #ffffff55}.ghost:hover{background:#ffffff1a}
+.gold{background:var(--amber);color:#2a1d00}.gold:hover{filter:brightness(1.07)}
+.hero{background:linear-gradient(135deg,var(--navy),var(--navy2) 60%,#4b5fd6);color:#fff;padding:70px 5vw 90px;display:grid;grid-template-columns:1.3fr 1fr;gap:30px;align-items:center}
+.hero h1{font-size:clamp(36px,6vw,64px);line-height:1.05;letter-spacing:-2px}.hero h1 span{color:var(--amber)}
+.hero p{margin:18px 0 26px;font-size:18px;opacity:.85}
+.srv{background:#ffffff14;border:1px solid #ffffff30;border-radius:18px;padding:22px;backdrop-filter:blur(6px)}
+.srv small{opacity:.7;text-transform:uppercase;letter-spacing:1px;font-size:11px}
+.srv b{display:block;font-size:18px;margin:4px 0 14px;word-break:break-all}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#35e08a;margin-right:6px}
+main{padding:0 5vw 60px;margin-top:-40px}
+h2{font-size:26px;margin:0 0 18px;color:var(--navy)}
+.sec{background:var(--bg);border-radius:24px 24px 0 0;padding-top:34px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:22px}
+.card{background:var(--card);border-radius:18px;overflow:hidden;box-shadow:0 4px 18px #1b255914;transition:.2s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-5px);box-shadow:0 12px 30px #1b255926}
+.card .im{aspect-ratio:1;background:#e8ecf8 center/cover;display:grid;place-items:center;font-size:48px}
+.card .bd{padding:16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card h3{font-size:17px}.card p{color:var(--mute);font-size:14px;flex:1}
+.row{display:flex;align-items:center;justify-content:space-between;margin-top:8px}
+.price{font-size:20px;font-weight:800;color:var(--navy)}
+.add{background:var(--navy);color:#fff;padding:9px 14px;border-radius:10px;font-weight:600}.add:hover{background:var(--navy2)}
+.msg{color:var(--mute);padding:30px 0}
+.skel{height:300px;border-radius:18px;background:linear-gradient(90deg,#e6eaf6 25%,#f1f3fb 50%,#e6eaf6 75%);background-size:200% 100%;animation:sh 1.2s infinite}@keyframes sh{to{background-position:-200% 0}}
+footer{background:var(--navy);color:#b9c0e6;text-align:center;padding:26px 5vw;font-size:14px}
+.ov{position:fixed;inset:0;background:#0d1230a6;display:none;z-index:50;align-items:center;justify-content:center;padding:16px}.ov.on{display:flex}
+.box{background:#fff;border-radius:20px;padding:28px;width:100%;max-width:420px;position:relative;max-height:90vh;overflow:auto}
+.x{position:absolute;right:16px;top:12px;background:none;font-size:26px;color:var(--mute)}
+.tabs{display:flex;gap:8px;margin:14px 0}.tabs button{flex:1;padding:10px;border-radius:10px;background:#eef1fb;color:var(--navy);font-weight:600}.tabs .on{background:var(--navy);color:#fff}
+label{display:block;font-weight:600;font-size:14px;margin:12px 0 5px}
+input{width:100%;padding:12px;border:1px solid #d5daee;border-radius:10px;font:inherit;background:#f7f8fe}input:focus{outline:2px solid var(--amber);border-color:transparent}
+.full{width:100%;margin-top:18px;padding:13px}
+.err{color:var(--bad);margin-top:12px;font-size:14px;min-height:18px}
+.drawer{position:fixed;top:0;right:-440px;width:min(420px,100%);height:100%;background:#fff;z-index:60;transition:.3s;display:flex;flex-direction:column;box-shadow:-10px 0 40px #0003}.drawer.on{right:0}
+.drawer .hd{padding:20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eceffa}
+.items{flex:1;overflow:auto;padding:12px 20px}
+.it{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid #f0f2fa}
+.it .th{width:54px;height:54px;border-radius:10px;background:#e8ecf8 center/cover;flex:none}
+.it div.n{flex:1;font-weight:600;font-size:15px}.it small{color:var(--mute);display:block;font-weight:400}
+.q{display:flex;align-items:center;gap:8px}.q button{width:26px;height:26px;border-radius:8px;background:#eef1fb;font-weight:700}
+.ft{padding:20px;border-top:1px solid #eceffa}.tot{display:flex;justify-content:space-between;font-size:20px;font-weight:800;color:var(--navy)}
+.toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,100px);background:var(--ink);color:#fff;padding:13px 22px;border-radius:12px;z-index:90;transition:.3s}.toast.on{transform:translate(-50%,0)}
+.ord{border:1px solid #e6e9f6;border-radius:12px;padding:12px;margin-top:10px;font-size:14px}
+@media(max-width:760px){.hero{grid-template-columns:1fr;padding:44px 5vw 70px}}
+</style></head><body>
+<header><div class="logo">Haat<i>.</i></div>
+<nav><button class="btn ghost" id="orders" style="display:none">My orders</button><button class="btn ghost" id="auth">Login / Sign up</button><button class="btn gold" id="cartBtn">Cart (0)</button></nav></header>
+
+<section class="hero"><div><h1>Everything for home, <span>delivered fast.</span></h1><p>Create an account and order in seconds. Fresh picks added every day.</p><button class="btn gold" onclick="document.getElementById('picks').scrollIntoView({behavior:'smooth'})">Shop today's picks</button></div>
+<div class="srv"><small>You are connected to</small><b id="iid"><span class="dot"></span>checking…</b><small>Availability zone</small><b id="iaz">—</b></div></section>
+
+<main><div class="sec" id="picks"><h2>Today's picks</h2><div class="grid" id="grid"><div class="skel"></div><div class="skel"></div><div class="skel"></div></div></div></main>
+<footer>Haat demo store · accounts, orders and products in Amazon RDS · product images in Amazon S3</footer>
+
+<div class="ov" id="authOv"><div class="box"><button class="x" data-close>&times;</button><h2 id="wt">Welcome</h2>
+<div class="tabs"><button id="tL">Login</button><button id="tS" class="on">Sign up</button></div>
+<div id="nameRow"><label>Name</label><input id="name" autocomplete="name"></div>
+<label>Email</label><input id="email" type="email" autocomplete="email">
+<label>Password (6+ characters)</label><input id="pw" type="password" autocomplete="current-password">
+<button class="btn gold full" id="go">Create account</button><div class="err" id="aerr"></div></div></div>
+
+<div class="ov" id="ordOv"><div class="box"><button class="x" data-close>&times;</button><h2>My orders</h2><div id="ordList"></div></div></div>
+
+<aside class="drawer" id="drawer"><div class="hd"><h2 style="margin:0">Your cart</h2><button class="x" style="position:static" id="cClose">&times;</button></div>
+<div class="items" id="items"></div><div class="ft"><div class="tot"><span>Total</span><span id="total">₹0</span></div><button class="btn gold full" id="checkout">Place order</button></div></aside>
+<div class="toast" id="toast"></div>
+
+<script>
+const $=id=>document.getElementById(id);
+const S=k=>{try{return localStorage.getItem(k)}catch(e){return null}},W=(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}};
+let token=S("t")||"",uname=S("n")||"",cart={},prods=[],mode="signup";
+try{cart=JSON.parse(S("c")||"{}")}catch(e){}
+const money=n=>"₹"+Number(n).toLocaleString("en-IN");
+const img=p=>p.image?"url('images/"+encodeURIComponent(p.image)+"')":"none";
+function toast(m){const t=$("toast");t.textContent=m;t.classList.add("on");setTimeout(()=>t.classList.remove("on"),2600)}
+function api(path,opt){opt=opt||{};opt.headers=Object.assign({"Content-Type":"application/json"},token?{Authorization:"Bearer "+token}:{},opt.headers||{});
+  return fetch(path,opt).then(r=>r.text().then(t=>{let j;try{j=JSON.parse(t)}catch(e){throw new Error("The server is not responding (HTTP "+r.status+"). Please try again in a moment.")}
+    if(!r.ok)throw new Error(j.error||"Request failed");return j}),()=>{throw new Error("Cannot reach the server. Check your connection.")})}
+function open(id){$(id).classList.add("on")}
+document.querySelectorAll("[data-close]").forEach(b=>b.onclick=()=>b.closest(".ov").classList.remove("on"));
+document.querySelectorAll(".ov").forEach(o=>o.onclick=e=>{if(e.target===o)o.classList.remove("on")});
+
+function head(){$("auth").textContent=token?"Hi, "+uname.split(" ")[0]+" · Logout":"Login / Sign up";$("orders").style.display=token?"":"none"}
+function setMode(m){mode=m;$("tS").classList.toggle("on",m==="signup");$("tL").classList.toggle("on",m==="login");$("nameRow").style.display=m==="signup"?"":"none";$("go").textContent=m==="signup"?"Create account":"Login";$("aerr").textContent=""}
+$("tS").onclick=()=>setMode("signup");$("tL").onclick=()=>setMode("login");
+$("auth").onclick=()=>{if(token){token=uname="";W("t","");W("n","");head();toast("Logged out")}else{setMode("signup");open("authOv")}};
+$("go").onclick=()=>{const b=$("go");b.disabled=true;$("aerr").textContent="";
+  const body=mode==="signup"?{name:$("name").value,email:$("email").value,password:$("pw").value}:{email:$("email").value,password:$("pw").value};
+  api("/api/"+mode,{method:"POST",body:JSON.stringify(body)}).then(j=>{token=j.token;uname=j.name;W("t",token);W("n",uname);head();$("authOv").classList.remove("on");toast("Welcome, "+uname+"!")})
+  .catch(e=>$("aerr").textContent=e.message).finally(()=>b.disabled=false)};
+
+function draw(){const g=$("grid");if(!prods.length){g.innerHTML='<p class="msg">No products yet. Check back soon.</p>';return}
+  g.innerHTML=prods.map(p=>`<div class="card"><div class="im" style="background-image:${img(p)}">${p.image?"":"🛍️"}</div><div class="bd"><h3>${esc(p.name)}</h3><p>${esc(p.description)}</p><div class="row"><span class="price">${money(p.price)}</span><button class="add" data-id="${p.id}">Add</button></div></div></div>`).join("")}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+$("grid").onclick=e=>{const id=e.target.dataset.id;if(id){cart[id]=Math.min((cart[id]||0)+1,20);saveCart();toast("Added to cart")}};
+function load(){api("/api/products").then(j=>{prods=j.products;draw();saveCart()}).catch(e=>{$("grid").innerHTML='<p class="msg">Could not load products: '+esc(e.message)+' <button class="btn gold" onclick="load()">Retry</button></p>'})}
+
+function saveCart(){W("c",JSON.stringify(cart));let n=0,t=0,h="";
+  for(const id in cart){const p=prods.find(x=>x.id==id);if(!p){continue}n+=cart[id];t+=p.price*cart[id];
+    h+=`<div class="it"><div class="th" style="background-image:${img(p)}"></div><div class="n">${esc(p.name)}<small>${money(p.price)}</small></div><div class="q"><button data-m="${id}">−</button>${cart[id]}<button data-p="${id}">+</button></div></div>`}
+  $("cartBtn").textContent="Cart ("+n+")";$("total").textContent=money(t);$("items").innerHTML=h||'<p class="msg">Your cart is empty.</p>'}
+$("items").onclick=e=>{const m=e.target.dataset.m,p=e.target.dataset.p;if(m){cart[m]--;if(cart[m]<1)delete cart[m]}if(p)cart[p]=Math.min(cart[p]+1,20);saveCart()};
+$("cartBtn").onclick=()=>$("drawer").classList.add("on");$("cClose").onclick=()=>$("drawer").classList.remove("on");
+$("checkout").onclick=()=>{const items=Object.keys(cart).map(id=>({id:+id,qty:cart[id]}));if(!items.length)return toast("Your cart is empty");
+  if(!token){$("drawer").classList.remove("on");setMode("login");open("authOv");return toast("Please log in to order")}
+  api("/api/order",{method:"POST",body:JSON.stringify({items})}).then(j=>{cart={};saveCart();$("drawer").classList.remove("on");toast("Order #"+j.id+" placed — "+money(j.total))}).catch(e=>toast(e.message))};
+$("orders").onclick=()=>{open("ordOv");$("ordList").innerHTML='<p class="msg">Loading…</p>';
+  api("/api/orders").then(j=>{$("ordList").innerHTML=j.orders.length?j.orders.map(o=>`<div class="ord"><b>Order #${o.id}</b> · ${money(o.total)}<br><small>${esc(o.created)}</small><br>${o.items.map(i=>esc(i.name)+" × "+i.qty).join(", ")}</div>`).join(""):'<p class="msg">No orders yet.</p>'}).catch(e=>$("ordList").innerHTML='<p class="err">'+esc(e.message)+'</p>')};
+
+fetch("instance.txt",{cache:"no-store"}).then(r=>{if(!r.ok)throw 0;return r.text()}).then(t=>{const a=t.trim().split(",");$("iid").innerHTML='<span class="dot"></span>'+esc(a[0]);$("iaz").textContent=a[1]||"—"}).catch(()=>{$("iid").innerHTML='<span class="dot"></span>local preview';$("iaz").textContent="—"});
+head();setMode("signup");load();
+</script></body></html>
